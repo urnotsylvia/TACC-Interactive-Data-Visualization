@@ -2,6 +2,11 @@
 // variables and prevent 
 ((() => {
 
-  console.log('Hello, world!');
+  d3.json('data/TACCdata.json').then(data => {
+    
+    let vis1 = firstVis()
+      ('#vis-svg-1', data);
+    
+  })
 
 })());
