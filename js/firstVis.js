@@ -89,7 +89,6 @@ function firstVis() {
 
         }
 
-
         // Placing text for legend title
         svg.append("text")
           .attr("x", width - 10)
@@ -114,12 +113,12 @@ function firstVis() {
           .attr("cy", -15)
           .attr("r", 6)
           .style("fill", "#7b6888");
-          // Placing colored circle for legend
-      svg.append("circle")
-        .attr("cx", width-10)
-        .attr("cy", 15)
-        .attr("r", 6)
-        .style("fill", "#6b486b");
+        // Placing colored circle for legend
+        svg.append("circle")
+          .attr("cx", width-10)
+          .attr("cy", 15)
+          .attr("r", 6)
+          .style("fill", "#6b486b");
         // Placing colored circle for legend
         svg.append("circle")
           .attr("cx", width-10)
@@ -147,13 +146,13 @@ function firstVis() {
           .text("Hispanic")
           .style("font-size", "15px")
           .attr("alignment-baseline","middle");
-      // Placing text for legend
-      svg.append("text")
-        .attr("x", width)
-        .attr("y", 20)
-        .text("Asian")
-        .style("font-size", "15px")
-        .attr("alignment-baseline","middle");
+        // Placing text for legend
+        svg.append("text")
+          .attr("x", width)
+          .attr("y", 20)
+          .text("Asian")
+          .style("font-size", "15px")
+          .attr("alignment-baseline","middle");
         // Placing text for legend
         svg.append("text")
           .attr("x", width)
@@ -161,13 +160,13 @@ function firstVis() {
           .text("Other")
           .style("font-size", "15px")
           .attr("alignment-baseline","middle");
-          // Placing text for legend title
-          svg.append("text")
-            .attr("x", width - 5)
-            .attr("y", 70)
-            .text("* Scaled by population size")
-            .style("font-size", "10px")
-            .attr("alignment-baseline","middle");
+        // Placing text for legend title
+        svg.append("text")
+          .attr("x", width - 5)
+          .attr("y", 70)
+          .text("* Scaled by population size")
+          .style("font-size", "10px")
+          .attr("alignment-baseline","middle");
 
         // Adding title
         svg = d3.select(selector);
@@ -177,7 +176,8 @@ function firstVis() {
             .attr("text-anchor", "middle")
             .style("font-size", "16px")
             .text("Racial Breakdown of Boston Neighborhoods*");
+        return chart;
+  }
 
-}
     return chart;
 }
