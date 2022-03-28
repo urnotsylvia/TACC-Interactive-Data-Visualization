@@ -38,6 +38,10 @@ function firstVis() {
         //              Roxbury        South Bos    Downtwn       Dorch
         let coords = [[x+165,y+125],[x+133.75,y-64],[x+172.5,y-5],[x,y]];
 
+        // Coordinates of each caption relative to the center of its respective circle
+        // Each element is an array of [x shift, y shift, font size]
+        let captions = [[100,0,10],[25,-25,6],[65,-10,8],[-200,0,11]];
+
         // Loops through the 4 data objects and fills arrays
         for(let i = 0; i < 4; i++) {
             let el = data[i];
@@ -59,13 +63,13 @@ function firstVis() {
             svg = svg.append('g')
                 .attr('transform', 'translate(' + coords[x][0] + ',' + coords[x][1] + ')');
     
-            var pie = d3.pie();
+            let pie = d3.pie();
     
-            var arc = d3.arc()
+            let arc = d3.arc()
                 .innerRadius(0)
                 .outerRadius(radii[x]);
     
-            var arcs = svg.selectAll("arc")
+            let arcs = svg.selectAll("arc")
                 .data(pie(percentages[x]))
                 .enter()
                 .append("g")
@@ -76,7 +80,16 @@ function firstVis() {
                     return color(i);
                 })
                 .attr("d", arc);
+
+            svg.append("text")
+                .attr("x", captions[x][0])
+                .attr("y", captions[x][1])
+                .style("font-size", captions[x][2] + "px")
+                .text(data[x].name);
+
         }
+
+        // Still need legend!
 
         // Adding title
         svg = d3.select(selector);
@@ -87,7 +100,6 @@ function firstVis() {
             .style("font-size", "16px")
             .text("Racial Breakdown of Boston Neighborhoods, Scaled by Population Size");
         
-        // Most likely add labels and stuff here too
         return chart;
     }
     return chart;
