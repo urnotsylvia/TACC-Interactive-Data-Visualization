@@ -6,7 +6,7 @@ function firstVis() {
         top: 60,
         left: 50,
         right: 30,
-        bottom: 35
+        bottom: 60
       },
       width = 500 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
@@ -33,7 +33,7 @@ function firstVis() {
         let percentages = [];
         // Center point coordinates for Dorchester circle
         let x = 400, y = 250;
-        
+
         // Coordinates of all circles
         //              Roxbury        South Bos    Downtwn       Dorch
         let coords = [[x+165,y+125],[x+133.75,y-64],[x+172.5,y-5],[x,y]];
@@ -62,19 +62,19 @@ function firstVis() {
             svg = d3.select(selector);
             svg = svg.append('g')
                 .attr('transform', 'translate(' + coords[x][0] + ',' + coords[x][1] + ')');
-    
+
             let pie = d3.pie();
-    
+
             let arc = d3.arc()
                 .innerRadius(0)
                 .outerRadius(radii[x]);
-    
+
             let arcs = svg.selectAll("arc")
                 .data(pie(percentages[x]))
                 .enter()
                 .append("g")
                 .attr("class", "arc")
-    
+
             arcs.append("path")
                 .attr("fill", function(d, i) {
                     return color(i);
@@ -89,7 +89,85 @@ function firstVis() {
 
         }
 
-        // Still need legend!
+
+        // Placing text for legend title
+        svg.append("text")
+          .attr("x", width - 10)
+          .attr("y", -100)
+          .text("Legend")
+          .style("font-size", "17px")
+          .attr("alignment-baseline","middle");
+        svg.append("circle")
+          .attr("cx", width-10)
+          .attr("cy", -75)
+          .attr("r", 6)
+          .style("fill", "#98abc5");
+        // Placing colored circle for legend
+        svg.append("circle")
+          .attr("cx", width-10)
+          .attr("cy", -45)
+          .attr("r", 6)
+          .style("fill", "#8a89a6");
+        // Placing colored circle for legend
+        svg.append("circle")
+          .attr("cx", width-10)
+          .attr("cy", -15)
+          .attr("r", 6)
+          .style("fill", "#7b6888");
+          // Placing colored circle for legend
+      svg.append("circle")
+        .attr("cx", width-10)
+        .attr("cy", 15)
+        .attr("r", 6)
+        .style("fill", "#6b486b");
+        // Placing colored circle for legend
+        svg.append("circle")
+          .attr("cx", width-10)
+          .attr("cy", 45)
+          .attr("r", 6)
+          .style("fill", "#a05d56");
+        // Placing text for legend
+        svg.append("text")
+          .attr("x", width)
+          .attr("y", -70)
+          .text("White")
+          .style("font-size", "15px")
+          .attr("alignment-baseline","middle");
+        // Placing text for legend
+        svg.append("text")
+          .attr("x", width)
+          .attr("y", -40)
+          .text("Black")
+          .style("font-size", "15px")
+          .attr("alignment-baseline","middle");
+        // Placing text for legend
+        svg.append("text")
+          .attr("x", width)
+          .attr("y", -10)
+          .text("Hispanic")
+          .style("font-size", "15px")
+          .attr("alignment-baseline","middle");
+      // Placing text for legend
+      svg.append("text")
+        .attr("x", width)
+        .attr("y", 20)
+        .text("Asian")
+        .style("font-size", "15px")
+        .attr("alignment-baseline","middle");
+        // Placing text for legend
+        svg.append("text")
+          .attr("x", width)
+          .attr("y", 50)
+          .text("Other")
+          .style("font-size", "15px")
+          .attr("alignment-baseline","middle");
+          // Placing text for legend title
+          svg.append("text")
+            .attr("x", width - 5)
+            .attr("y", 70)
+            .text("* Scaled by population size")
+            .style("font-size", "10px")
+            .attr("alignment-baseline","middle");
 
         // Adding title
         svg = d3.select(selector);
@@ -98,9 +176,8 @@ function firstVis() {
             .attr("y", 100)
             .attr("text-anchor", "middle")
             .style("font-size", "16px")
-            .text("Racial Breakdown of Boston Neighborhoods, Scaled by Population Size");
-        
-        return chart;
-    }
+            .text("Racial Breakdown of Boston Neighborhoods*");
+
+}
     return chart;
 }
