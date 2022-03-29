@@ -19,7 +19,7 @@ function firstVis() {
         let svg = d3.select(selector);
 
         // Sets color scale
-        let color = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56"])
+        let color = d3.scaleOrdinal(["#5E9BB3", "#5EB398", "#895EB3", "#B35E99", "#EDE45B"])
             .domain(['white','black','hispanic','asian','other']);
 
         let largestRadius = 125;
@@ -91,79 +91,79 @@ function firstVis() {
 
         // Placing text for legend title
         svg.append("text")
-          .attr("x", width - 10)
+          .attr("x", width - 15)
           .attr("y", -100)
-          .text("Legend")
+          .text("LEGEND")
           .style("font-size", "17px")
           .attr("alignment-baseline","middle");
         svg.append("circle")
           .attr("cx", width-10)
           .attr("cy", -75)
           .attr("r", 6)
-          .style("fill", "#98abc5");
+          .style("fill", "#5E9BB3");
         // Placing colored circle for legend
         svg.append("circle")
           .attr("cx", width-10)
           .attr("cy", -45)
           .attr("r", 6)
-          .style("fill", "#8a89a6");
+          .style("fill", "#5EB398");
         // Placing colored circle for legend
         svg.append("circle")
           .attr("cx", width-10)
           .attr("cy", -15)
           .attr("r", 6)
-          .style("fill", "#7b6888");
+          .style("fill", "#895EB3");
         // Placing colored circle for legend
         svg.append("circle")
           .attr("cx", width-10)
           .attr("cy", 15)
           .attr("r", 6)
-          .style("fill", "#6b486b");
+          .style("fill", "#B35E99");
         // Placing colored circle for legend
         svg.append("circle")
           .attr("cx", width-10)
           .attr("cy", 45)
           .attr("r", 6)
-          .style("fill", "#a05d56");
+          .style("fill", "#EDE45B");
         // Placing text for legend
         svg.append("text")
           .attr("x", width)
-          .attr("y", -70)
+          .attr("y", -75)
           .text("White")
           .style("font-size", "15px")
           .attr("alignment-baseline","middle");
         // Placing text for legend
         svg.append("text")
           .attr("x", width)
-          .attr("y", -40)
+          .attr("y", -45)
           .text("Black")
           .style("font-size", "15px")
           .attr("alignment-baseline","middle");
         // Placing text for legend
         svg.append("text")
           .attr("x", width)
-          .attr("y", -10)
+          .attr("y", -15)
           .text("Hispanic")
           .style("font-size", "15px")
           .attr("alignment-baseline","middle");
         // Placing text for legend
         svg.append("text")
           .attr("x", width)
-          .attr("y", 20)
+          .attr("y", 15)
           .text("Asian")
           .style("font-size", "15px")
           .attr("alignment-baseline","middle");
         // Placing text for legend
         svg.append("text")
           .attr("x", width)
-          .attr("y", 50)
+          .attr("y", 45)
           .text("Other")
           .style("font-size", "15px")
           .attr("alignment-baseline","middle");
         // Placing text for legend title
         svg.append("text")
           .attr("x", width - 5)
-          .attr("y", 70)
+          .attr("y", 65)
           .text("* Scaled by population size")
           .style("font-size", "10px")
           .attr("alignment-baseline","middle");
