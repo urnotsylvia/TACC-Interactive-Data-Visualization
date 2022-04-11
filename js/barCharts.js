@@ -37,6 +37,15 @@ function barCharts() {
               .attr("width", x.bandwidth())
               .attr("height", function(d) { return 150 - y(d.value); })
               .attr("fill", "#69b3a2");
+
+        //not working 
+        svg.append("text")
+        .attr("x", (svg.attr("width") / 2 + 70))
+        .attr("y", -10)
+        .attr("text-anchor", "middle")
+        .style("font-size", "14px")
+        .text("Roxbury Income Distribution");
+
         return chart;
         
 
