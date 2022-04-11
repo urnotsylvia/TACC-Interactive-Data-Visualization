@@ -25,6 +25,7 @@ function firstVis() {
         let largestRadius = 125;
 
         // All arrays follow the order: [Roxbury, South Boston Waterfront, Downtown, Dorchester]
+        let names = ["Roxbury","South Boston Waterfront","Downtown","Dorchester"];
         // Radius size of each circle in pixels
         let radii = [];
         // Population of each city
@@ -75,17 +76,28 @@ function firstVis() {
                 .append("g")
                 .attr("class", "arc")
 
+            // Draws circles and adds unique ID for each one
             arcs.append("path")
-                .attr("fill", function(d, i) {
-                    return color(i);
-                })
-                .attr("d", arc);
+              .attr("fill", function(d, i) {
+                  return color(i);
+              })
+              .attr("d", arc)
+              .attr("id", names[x])
+              .on("click", function(d) {
+                console.log("name: " + names[x]);}
+                )
+              .append("svg:title")
+              .text(function(d) {
+                return d.value;
+              });
 
             svg.append("text")
                 .attr("x", captions[x][0])
                 .attr("y", captions[x][1])
                 .style("font-size", captions[x][2] + "px")
                 .text(data[x].name);
+
+                
 
         }
 
