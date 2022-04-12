@@ -2,11 +2,13 @@
 // variables and prevent
 ((() => {
 
-  d3.json('data/TACCdata.json').then(data => {
+d3.json('data/TACCdata.json').then(data => {
 
     console.log('testing');
+    const eventName = 'newSelect';
 
     let vis1 = firstVis()
+      .selectionDispatcher(d3.dispatch(eventName))
       ('#vis-svg-1', data[0]);
 
     let vis2 = barCharts()
@@ -21,9 +23,9 @@
     let vis5 = barCharts()
       ('#vis-svg-5', data[1][3],'Dorchester');
 
+    vis1.selectionDispatcher().on(eventName, onlyShowByID);
 
-    
-  });
+  })
 
   d3.select('#Roxbury')
     .style('display', 'none');
@@ -37,17 +39,41 @@
   d3.select('#Dorchester')
     .style('display', 'none');
 
-  // d3.select('#vis-holder-2')
-  //   .selectAll('div')
-  //   .style('visibility','hidden');
+  // function onlyShowByID(id) {
+  //   console.log('in showbyid ' + id);
+  //   if (id == 'South Boston Waterfront') {
+  //     id = 'SouthBostonWaterfront';
+  //   }
+  //   d3.select('#' + id)
+  //     .style('display','flex');
+      // d3.select('#Roxbury')
+      //   .style('visibility','hidden');
+      // d3.select('#Downtown')
+      //   .style('visibility','hidden');
+      // d3.select('#Dorchester')
+      //   .style('visibility','hidden');
+
+  //};
+
+
+
   function onlyShowByID(id) {
+    console.log(id);
+    if (id == 'South Boston Waterfront') {
+      id = 'SouthBostonWaterfront';
+    }
+    else {
+    }
+    // d3.select('#vis-holder-2')
+    //   .selectAll('div')
+    //   .style('visibility','hidden');
     d3.select('#' + id)
       .style('display', 'flex');
-    d3.select('#vis-holder-2')
-      .selectAll('div')
-      .style('visibility','hidden');
+
+    // d3.select('#' + id)
+
   };
 
-  onlyShowByID('Downtown');
+  //onlyShowByID('Dorchester');
 
 })());

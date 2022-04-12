@@ -9,7 +9,8 @@ function firstVis() {
         bottom: 60
       },
       width = 500 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
+      height = 500 - margin.top - margin.bottom,
+      dispatcher;
 
 
     // Generates the graph
@@ -83,8 +84,8 @@ function firstVis() {
               })
               .attr("d", arc)
               .attr("id", names[x])
-              .on("click", function(d) {
-                console.log("name: " + names[x]);}
+              .on("mousedown", function(d) {
+                dispatcher.call('newSelect', this, names[x]);}
                 )
               .append("svg:title")
               .text(function(d) {
@@ -96,8 +97,6 @@ function firstVis() {
                 .attr("y", captions[x][1])
                 .style("font-size", captions[x][2] + "px")
                 .text(data[x].name);
-
-                
 
         }
 
@@ -190,6 +189,12 @@ function firstVis() {
             .text("Racial Breakdown of Boston Neighborhoods*");
         return chart;
   }
+
+  chart.selectionDispatcher = function (_) {
+    if (!arguments.length) return dispatcher;
+    dispatcher = _;
+    return chart;
+  };
 
     return chart;
 }
