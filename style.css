@@ -22,6 +22,12 @@ h1, h2, h3 {
   display: flex;
 }
 
+.vis-holder-2 {
+	width: 100%;
+	height: 100%;
+	display: flex;
+  }
+
 .vis-svg {
   background-color: #f4f1f0;
 }

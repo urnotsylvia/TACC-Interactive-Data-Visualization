@@ -4,11 +4,9 @@ function barCharts() {
 
     function chart(selector,data) {
 
-        //console.log(data);
         // Get svg from selector
         let svg = d3.select(selector).append('g')
             .attr('transform', 'translate(' + 100 + ',' + 100 + ')');
-        //svg.append("text").text("Testing!");
 
         //let labels = ["< 15k","15k - 25k","25k - 35k","35k - 50k","50k - 75k","75k - 100k","100k - 150k","> 150k"];
 
