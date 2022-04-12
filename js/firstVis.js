@@ -75,7 +75,8 @@ function firstVis() {
                 .data(pie(percentages[x]))
                 .enter()
                 .append("g")
-                .attr("class", "arc")
+                .attr("class", "arc");
+
 
             // Draws circles and adds unique ID for each one
             arcs.append("path")
@@ -87,9 +88,11 @@ function firstVis() {
               .on("mousedown", function(d) {
                 dispatcher.call('newSelect', this, names[x]);}
                 )
+
               .append("svg:title")
               .text(function(d) {
                 return d.value;
+
               });
 
             svg.append("text")
@@ -98,14 +101,15 @@ function firstVis() {
                 .style("font-size", captions[x][2] + "px")
                 .text(data[x].name);
 
+
         }
 
         // Placing text for legend title
         svg.append("text")
           .attr("x", width - 15)
           .attr("y", -100)
-          .text("LEGEND")
-          .style("font-size", "17px")
+          .text("Legend")
+          .style("font-size", "15px")
           .attr("alignment-baseline","middle");
         svg.append("circle")
           .attr("cx", width-10)
@@ -139,45 +143,59 @@ function firstVis() {
         // Placing text for legend
         svg.append("text")
           .attr("x", width)
-          .attr("y", -75)
+          .attr("y", -70)
           .text("White")
-          .style("font-size", "15px")
+          .style("font-size", "13px")
           .attr("alignment-baseline","middle");
         // Placing text for legend
         svg.append("text")
           .attr("x", width)
-          .attr("y", -45)
+          .attr("y", -40)
           .text("Black")
-          .style("font-size", "15px")
+          .style("font-size", "13px")
           .attr("alignment-baseline","middle");
         // Placing text for legend
         svg.append("text")
           .attr("x", width)
-          .attr("y", -15)
+          .attr("y", -10)
           .text("Hispanic")
-          .style("font-size", "15px")
+          .style("font-size", "13px")
           .attr("alignment-baseline","middle");
         // Placing text for legend
         svg.append("text")
           .attr("x", width)
-          .attr("y", 15)
+          .attr("y", 20)
           .text("Asian")
-          .style("font-size", "15px")
+          .style("font-size", "13px")
           .attr("alignment-baseline","middle");
         // Placing text for legend
         svg.append("text")
           .attr("x", width)
-          .attr("y", 45)
+          .attr("y", 50)
           .text("Other")
-          .style("font-size", "15px")
+          .style("font-size", "13px")
           .attr("alignment-baseline","middle");
         // Placing text for legend title
         svg.append("text")
-          .attr("x", width - 5)
-          .attr("y", 65)
+          .attr("x", width - 10)
+          .attr("y", 80)
           .text("* Scaled by population size")
           .style("font-size", "10px")
           .attr("alignment-baseline","middle");
+
+        // placing outline of legend
+        svg.append('rect')
+          .attr('x', width - 27)
+          .attr('y', - 126)
+          .attr('width', 90)
+          .attr('height', 190)
+          .attr('stroke', 'black')
+          .style('stroke-width', '1')
+          .style('stroke', '#154EAB')    // set the line colour
+          .attr('fill', '#69a3b2')
+          .attr('rx', '20')
+          .attr('ry', '20')
+          .style("fill-opacity", 0);
 
         // Adding title
         svg = d3.select(selector);
@@ -186,6 +204,7 @@ function firstVis() {
             .attr("y", 100)
             .attr("text-anchor", "middle")
             .style("font-size", "16px")
+            .attr("font-weight", 10**100000)
             .text("Racial Breakdown of Boston Neighborhoods*");
         return chart;
   }
