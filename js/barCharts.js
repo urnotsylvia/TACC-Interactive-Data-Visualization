@@ -35,14 +35,30 @@ function barCharts() {
               .attr("y", function(d) { return y(d.value); })
               .attr("width", x.bandwidth())
               .attr("height", function(d) { return 149.5 - y(d.value); })
-              .attr("fill", "#328fa8");
+              .attr("fill", "#328fa8")
+              .on('mouseout', function(d) {
+    d3.select(this)
+        .transition()
+        .duration(250)
+        .attr("fill", "#328fa8");
+})
+              .on('mouseover', function() {
+                    d3.select(this)
+                        .attr('fill', 'orange');
+                        })
+              .append("svg:title")
+                .text(function(d) { return '$' + d.value; })
+
+;
 
        //add title
         svg.append("text")
             .attr("x", (svg.attr("width") / 2 + 80))
             .attr("y", -10)
             .attr("text-anchor", "middle")
-            .style("font-size", "8px")
+            .style("font-size", "7px")
+            .style('stroke', 'black')
+            .style('stroke-width', '0.5')
             .text(title + ' Income Distribution');
 
         // add x-axis
@@ -61,6 +77,19 @@ function barCharts() {
              .style("font-size", "6px")
              .attr('transform', 'rotate(-90)')
              .text('Neighborhood Residents');
+
+             svg.append("circle")
+               .attr("cx", (svg.attr("width") / 2 + 210))
+               .attr("cy", 60)
+               .attr("r", 15)
+               .style("fill", "#7e5ebd");
+
+               svg.append("circle")
+                 .attr("cx",  (svg.attr("width") / 2 +  210))
+                 .attr("cy", 20)
+                 .attr("r", 15)
+                 .style("fill", "#5ebd92");
+
 
         return chart;
     }

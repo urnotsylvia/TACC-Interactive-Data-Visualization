@@ -76,7 +76,14 @@ function firstVis() {
                 .enter()
                 .append("g")
                 .attr("class", "arc")
-                .attr("stroke", "white") .style("stroke-width", "1px") .style("opacity", 0.7);
+                .attr("stroke", "white") .style("stroke-width", "1px")
+                .style("opacity", 0.7)
+                .on("mouseover", function(d) {
+                      d3.select(this)
+                        .style("opacity", 1); })
+                .on("mouseout", function(d) {
+                        d3.select(this)
+                            .style("opacity", 0.7); });
 
 
             // Draws circles and adds unique ID for each one
@@ -92,7 +99,7 @@ function firstVis() {
 
               .append("svg:title")
               .text(function(d) {
-                return d.value;
+                return d.value + '%';
 
               });
 
@@ -201,12 +208,14 @@ function firstVis() {
         // Adding title
         svg = d3.select(selector);
         svg.append("text")
-            .attr("x", 300 + width / 2)
-            .attr("y", 100)
+            .attr("x", 330 + width / 2)
+            .attr("y", 90)
             .attr("text-anchor", "middle")
-            .style("font-size", "16px")
-            .attr("font-weight", 10**100000)
-            .text("Racial Breakdown of Boston Neighborhoods*");
+            .style("font-size", "20px")
+            .style('stroke', 'black')
+            .style('stroke-width', '1')
+            .text("Racial Breakdown of Boston Neighborhoods");
+
         return chart;
   }
 
