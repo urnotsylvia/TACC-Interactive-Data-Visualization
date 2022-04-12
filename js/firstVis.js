@@ -83,7 +83,7 @@ function firstVis() {
                   return color(i);
               })
               .attr("d", arc)
-              .attr("id", names[x])
+              .attr("id", names[x]+'_circle')
               .on("mousedown", function(d) {
                 dispatcher.call('newSelect', this, names[x]);}
                 )
