@@ -39,41 +39,14 @@ d3.json('data/TACCdata.json').then(data => {
   d3.select('#Dorchester')
     .style('display', 'none');
 
-  // function onlyShowByID(id) {
-  //   console.log('in showbyid ' + id);
-  //   if (id == 'South Boston Waterfront') {
-  //     id = 'SouthBostonWaterfront';
-  //   }
-  //   d3.select('#' + id)
-  //     .style('display','flex');
-      // d3.select('#Roxbury')
-      //   .style('visibility','hidden');
-      // d3.select('#Downtown')
-      //   .style('visibility','hidden');
-      // d3.select('#Dorchester')
-      //   .style('visibility','hidden');
-
-  //};
-
-
-
   function onlyShowByID(id) {
     console.log(id);
     if (id == 'South Boston Waterfront') {
       id = 'SouthBostonWaterfront';
     }
-    else {
-    }
-    // d3.select('#vis-holder-2')
-    //   .selectAll('div')
-    //   .style('visibility','hidden');
+    d3.selectAll('.vis-holder-2')
+      .style('display','none');
     d3.select('#' + id)
       .style('display', 'flex');
-
-    // d3.select('#' + id)
-
   };
-
-  //onlyShowByID('Dorchester');
-
 })());
