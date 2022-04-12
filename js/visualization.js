@@ -10,7 +10,18 @@
       ('#vis-svg-1', data[0]);
 
     let vis2 = barCharts()
-      ('#vis-svg-2', data[1][0]);
+      ('#vis-svg-2', data[1][0], 'Roxbury');
+    
+    let vis3 = barCharts()
+      ('#vis-svg-3', data[1][1],'South Boston Waterfront');
+  
+    let vis4 = barCharts()
+      ('#vis-svg-4', data[1][2],'Downtown');
+
+    let vis5 = barCharts()
+      ('#vis-svg-5', data[1][3],'Dorchester');
+
+
     
   });
 

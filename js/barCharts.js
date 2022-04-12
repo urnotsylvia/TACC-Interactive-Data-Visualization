@@ -2,7 +2,7 @@
 function barCharts() {
 
 
-    function chart(selector,data) {
+    function chart(selector,data,title) {
 
         // Get svg from selector
         let svg = d3.select(selector).append('g')
@@ -21,7 +21,7 @@ function barCharts() {
                 .attr("transform", "translate(-10,0)rotate(-45)")
                 .style("text-anchor", "end");
         let y = d3.scaleLinear()
-            .domain([0, 7000])
+            .domain([0, 50 + d3.max(data, d => d.value)])
             .range([150,0]);
         svg.append("g")
             .call(d3.axisLeft(y));
@@ -38,15 +38,13 @@ function barCharts() {
 
        //add title 
         svg.append("text")
-        .attr("x", (svg.attr("width") / 2 + 70))
-        .attr("y", -10)
-        .attr("text-anchor", "middle")
-        .style("font-size", "14px")
-        .text("Roxbury Income Distribution");
-
-        return chart;
+            .attr("x", (svg.attr("width") / 2 + 70))
+            .attr("y", -10)
+            .attr("text-anchor", "middle")
+            .style("font-size", "14px")
+            .text(title + ' Income Distribution');
         
-
+        return chart;
     }
     return chart;
 }
