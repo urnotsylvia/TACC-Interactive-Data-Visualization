@@ -75,7 +75,8 @@ function firstVis() {
                 .data(pie(percentages[x]))
                 .enter()
                 .append("g")
-                .attr("class", "arc");
+                .attr("class", "arc")
+                .attr("stroke", "white") .style("stroke-width", "1px") .style("opacity", 0.7);
 
 
             // Draws circles and adds unique ID for each one
@@ -191,11 +192,11 @@ function firstVis() {
           .attr('height', 190)
           .attr('stroke', 'black')
           .style('stroke-width', '1')
-          .style('stroke', '#154EAB')    // set the line colour
+          .style('stroke', 'white')    // set the line colour
           .attr('fill', '#69a3b2')
           .attr('rx', '20')
           .attr('ry', '20')
-          .style("fill-opacity", 0);
+          .style("fill-opacity", 0.05);
 
         // Adding title
         svg = d3.select(selector);

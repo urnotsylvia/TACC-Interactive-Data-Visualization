@@ -35,7 +35,7 @@ function barCharts() {
               .attr("y", function(d) { return y(d.value); })
               .attr("width", x.bandwidth())
               .attr("height", function(d) { return 149.5 - y(d.value); })
-              .attr("fill", "#154EAB");
+              .attr("fill", "#328fa8");
 
        //add title
         svg.append("text")
