@@ -76,7 +76,6 @@ function firstVis() {
                 .enter()
                 .append("g")
                 .attr("class", "arc")
-                .attr("stroke", "white") .style("stroke-width", "1px")
                 .style("opacity", 0.7)
                 .on("mouseover", function(d) {
                       d3.select(this)
@@ -93,10 +92,10 @@ function firstVis() {
               })
               .attr("d", arc)
               .attr("id", names[x]+'_circle')
+              .attr("stroke", "white").style("stroke-width", "1px")
               .on("mousedown", function(d) {
                 dispatcher.call('newSelect', this, names[x]);}
                 )
-
               .append("svg:title")
               .text(function(d) {
                 return d.value + '%';
@@ -208,8 +207,8 @@ function firstVis() {
         // Adding title
         svg = d3.select(selector);
         svg.append("text")
-            .attr("x", 330 + width / 2)
-            .attr("y", 90)
+            .attr("x", 300 + width / 2)
+            .attr("y", 70)
             .attr("text-anchor", "middle")
             .style("font-size", "20px")
             .style('stroke', 'black')

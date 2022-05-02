@@ -1,13 +1,13 @@
 function stackedBars() {
 
-    let width = 200;
-    let height = 200;
+    let width = 165;
+    let height = 150;
 
     function chart(selector, data) {
 
         // Get svg from selector
         let svg = d3.select(selector).append('g')
-            .attr('transform', 'translate(' + -50 + ',' + 20 + ')');
+            .attr('transform', 'translate(' + -130 + ',' + 30 + ')');
 
         let subgroups = data.columns.slice(1);
 
@@ -16,8 +16,6 @@ function stackedBars() {
 
         let groups = ["Roxbury","South Boston Waterfront","Downtown","Dorchester"];
 
-        console.log(groups);
-        
         // Add X axis
         let x = d3.scaleBand()
             .domain(groups)
@@ -25,39 +23,29 @@ function stackedBars() {
             .padding([0.2])
         svg.append("g")
             .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x).tickSizeOuter(0));
+            .call(d3.axisBottom(x).tickSizeOuter(0))
+            .selectAll("text")
+                .style("text-anchor", "middle")
+                .style("font-size", "5px");
 
-        console.log(x("Roxbury"));
-        console.log(x("Dorchester"));
-        
         // Add Y axis
         let y = d3.scaleLinear()
             .domain([0, 100])
             .range([ height, 0 ]);
         svg.append("g")
-            .call(d3.axisLeft(y));
-        
+            .call(d3.axisLeft(y))
+            .style("font-size", "5px");
+
         // color palette = one color per subgroup
         let color = d3.scaleOrdinal()
             .domain(subgroups)
-            .range(['#e41a1c','#377eb8','#4daf4a','#ababab','#db7a87']);
-        
-        // Normalize the data -> sum of each group must be 100!
-        // console.log(data)
-        // dataNormalized = []
-        // data.forEach(function(d){
-        //   // Compute the total
-        //   tot = 0
-        //   for (i in subgroups){ name=subgroups[i] ; tot += +d[name] }
-        //   // Now normalize
-        //   for (i in subgroups){ name=subgroups[i] ; d[name] = d[name] / tot * 100}
-        // })
-        
+            .range(['#8b62b5','#769dcf','#ff9696', '#5fb374','#ffc496']);
+
         //stack the data? --> stack per subgroup
         var stackedData = d3.stack()
             .keys(subgroups)
             (data);
-        
+
         // Show the bars
         svg.append("g")
             .selectAll("g")
@@ -70,14 +58,22 @@ function stackedBars() {
             .data(function(d) { return d; })
             .enter().append("rect")
                 .attr("x", function(d) { return x(d.data.Neighborhood); })
-                .attr("y", function(d) { return y(d[1]); })
+                .attr("y", function(d) { return y(d[1]) - 0.5; })
                 .attr("height", function(d) { return y(d[0]) - y(d[1]); })
                 .attr("width",x.bandwidth())
+                .style("opacity", 0.7)
+                .attr('stroke', 'white').style("stroke-width", "0.5px")
+                .attr("z", "0")
+                .on("mouseover", function(d) {
+                      d3.select(this)
+                        .style("opacity", 1); })
+                .on("mouseout", function(d) {
+                        d3.select(this)
+                            .style("opacity", 0.7); });
 
-/*
         //add title
          svg.append("text")
-             .attr("x", (svg.attr("width") / 2 + 170))
+             .attr("x", (svg.attr("width") / 2 + 85))
              .attr("y", -10)
              .attr("text-anchor", "middle")
              .style("font-size", "7px")
@@ -87,8 +83,8 @@ function stackedBars() {
 
          // add x-axis
           svg.append("text")
-              .attr("x", (svg.attr("width") / 2 + 170))
-              .attr("y", 150)
+              .attr("x", (svg.attr("width") / 2 + 85))
+              .attr("y", 180)
               .attr("text-anchor", "middle")
               .style("font-size", "6px")
               .text('Boston Neighborhood');
@@ -96,14 +92,78 @@ function stackedBars() {
          // add y-axis
           svg.append("text")
               .attr("x", (svg.attr("width") / 2 - 75))
-              .attr("y", +70)
+              .attr("y", - 20)
               .attr("text-anchor", "middle")
               .style("font-size", "6px")
               .attr('transform', 'rotate(-90)')
               .text('Percentage of Households');
 
-             return chart;
-*/
+
+              svg.append("circle")
+                .attr("cx", width + 10)
+                .attr("cy", 10)
+                .attr("r", 3)
+                .style("fill", "#ffc496");
+              // Placing colored circle for legend
+              svg.append("circle")
+                .attr("cx", width + 10)
+                .attr("cy", 20)
+                .attr("r", 3)
+                .style("fill", "#5fb374");
+              // Placing colored circle for legend
+              svg.append("circle")
+                .attr("cx", width + 10)
+                .attr("cy", 30)
+                .attr("r", 3)
+                .style("fill", "#ff9696");
+              // Placing colored circle for legend
+              svg.append("circle")
+                .attr("cx", width + 10)
+                .attr("cy", 40)
+                .attr("r", 3)
+                .style("fill", "#769dcf");
+              // Placing colored circle for legend
+              svg.append("circle")
+                .attr("cx", width + 10)
+                .attr("cy", 50)
+                .attr("r", 3)
+                .style("fill", "#8b62b5");
+              // Placing text for legend
+              svg.append("text")
+                .attr("x", width + 15)
+                .attr("y", 10)
+                .text("Householder Not Living Alone")
+                .style("font-size", "5px")
+                .attr("alignment-baseline","middle");
+              // Placing text for legend
+              svg.append("text")
+                .attr("x", width + 15)
+                .attr("y", 20)
+                .text("Householder Living Alone")
+                .style("font-size", "5px")
+                .attr("alignment-baseline","middle");
+              // Placing text for legend
+              svg.append("text")
+                .attr("x", width + 15)
+                .attr("y", 30)
+                .text("Female Householder")
+                .style("font-size", "5px")
+                .attr("alignment-baseline","middle");
+              // Placing text for legend
+              svg.append("text")
+                .attr("x", width + 15)
+                .attr("y", 40)
+                .text("Male Householder")
+                .style("font-size", "5px")
+                .attr("alignment-baseline","middle");
+              // Placing text for legend
+              svg.append("text")
+                .attr("x", width + 15)
+                .attr("y", 50)
+                .text("Married Couple Family")
+                .style("font-size", "5px")
+                .attr("alignment-baseline","middle");
+
             return chart;
 
         }
