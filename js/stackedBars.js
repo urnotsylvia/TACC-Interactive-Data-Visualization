@@ -7,12 +7,14 @@ function stackedBars() {
 
         // Get svg from selector
         let svg = d3.select(selector).append('g')
-            .attr('transform', 'translate(' + 120 + ',' + 20 + ')');
+            .attr('transform', 'translate(' + -50 + ',' + 20 + ')');
 
         let subgroups = data.columns.slice(1);
 
         // List of groups = species here = value of the first column called group -> I show them on the X axis
-        let groups = d3.map(data, function(d){return(d.Neighborhood)}).keys();
+        //let groups = d3.map(data, function(d){return(d.Neighborhood)}).keys();
+
+        let groups = ["Roxbury","South Boston Waterfront","Downtown","Dorchester"];
 
         console.log(groups);
         

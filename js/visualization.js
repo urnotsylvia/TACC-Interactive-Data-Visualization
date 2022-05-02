@@ -32,8 +32,6 @@ d3.json('data/TACCdata.json').then(data => {
   })
 })
 
-
-
   d3.select('#Roxbury')
     .style('display', 'none');
 
@@ -56,4 +54,8 @@ d3.json('data/TACCdata.json').then(data => {
     d3.select('#' + id)
       .style('display', 'flex');
   };
+
+  d3.select('#SouthBostonWaterfront')
+    .style('display', 'flex');
+
 })());

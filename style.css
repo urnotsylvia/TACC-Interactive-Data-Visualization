@@ -23,10 +23,16 @@ h1, h2, h3 {
 }
 
 .vis-holder-2 {
-	width: 100%;
+	width: 50%;
 	height: 100%;
-	display:flex;
+	float: left;
   }
+
+.vis-holder-3 {
+	width: 50%;
+	height: 100%;
+	float: right;
+}
 
 .vis-svg {
   background-color: #f4f1f0;
