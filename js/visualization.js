@@ -23,6 +23,9 @@ d3.json('data/TACCdata.json').then(data => {
     let vis5 = barCharts()
       ('#vis-svg-5', data[1][3],'Dorchester');
 
+    let vis6 = stackedBars()
+      ('#vis-svg-6', data[2], 'stackedBars');
+
     vis1.selectionDispatcher().on(eventName, onlyShowByID);
   })
 

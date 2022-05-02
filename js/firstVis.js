@@ -3,10 +3,10 @@ function firstVis() {
 
     // Defining values
     let margin = {
-        top: 60,
+        top: 10,
         left: 50,
         right: 30,
-        bottom: 60
+        bottom: 10
       },
       width = 500 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom,

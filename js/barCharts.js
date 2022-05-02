@@ -2,11 +2,11 @@
 function barCharts() {
 
     // making chart
-    function chart(selector, data, title, dispatch) {
+    function chart(selector, data, title) {
 
         // Get svg from selector
         let svg = d3.select(selector).append('g')
-            .attr('transform', 'translate(' + 40 + ',' + 20 + ')');
+            .attr('transform', 'translate(' + 350 + ',' -150 + ')');
 
         // format comma
         let formatComma = d3.format(",")
