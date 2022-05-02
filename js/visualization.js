@@ -4,6 +4,8 @@
 
 d3.json('data/TACCdata.json').then(data => {
 
+  d3.csv('data/household.csv').then(data2 => {
+
     console.log('testing');
     const eventName = 'newSelect';
 
@@ -24,10 +26,11 @@ d3.json('data/TACCdata.json').then(data => {
       ('#vis-svg-5', data[1][3],'Dorchester');
 
     let vis6 = stackedBars()
-      ('#vis-svg-6', data[2], 'stackedBars');
+      ('#vis-svg-6', data2, 'stackedBars');
 
     vis1.selectionDispatcher().on(eventName, onlyShowByID);
   })
+})
 
 
 
