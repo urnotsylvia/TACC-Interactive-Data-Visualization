@@ -1,1 +1,69 @@
-[[{"name":"Roxbury","population":54161,"white":11.0,"black":50.3,"hispanic":30.7,"asian":3.5,"other":4.5},{"name":"South Boston Waterfront","population":4403,"white":82.7,"black":2.1,"hispanic":2.9,"asian":9.7,"other":2.7},{"name":"Downtown","population":18306,"white":55.6,"black":4.0,"hispanic":6.0,"asian":31.1,"other":3.3},{"name":"Dorchester","population":126909,"white":22.3,"black":44.0,"hispanic":19.9,"asian":9.9,"other":4.0}],[[{"range":"<15k","value":6340},{"range":"15k-25k","value":2449},{"range":"25k-35k","value":2084},{"range":"35k-50k","value":2216},{"range":"50k-75k","value":2107},{"range":"75k-100k","value":1581},{"range":"100k-150k","value":1806},{"range":">150k","value":1316}], [{"range":"<15k","value":181},{"range":"15k-25k","value":87},{"range":"25k-35k","value":55},{"range":"35k-50k","value":94},{"range":"50k-75k","value":169},{"range":"75k-100k","value":281},{"range":"100k-150k","value":418},{"range":">150k","value":1343}],[{"range":"<15k","value":1531},{"range":"15k-25k","value":517},{"range":"25k-35k","value":405},{"range":"35k-50k","value":464},{"range":"50k-75k","value":790},{"range":"75k-100k","value":480},{"range":"100k-150k","value":867},{"range":">150k","value":2888}],[{"range":"<15k","value":8042},{"range":"15k-25k","value":4694},{"range":"25k-35k","value":3464},{"range":"35k-50k","value":4581},{"range":"50k-75k","value":6121},{"range":"75k-100k","value":4776},{"range":"100k-150k","value":6324},{"range":">150k","value":6299}]]]
+[
+    [
+        {"name":"Roxbury","population":54161,"white":11.0,"black":50.3,"hispanic":30.7,"asian":3.5,"other":4.5},
+        {"name":"South Boston Waterfront","population":4403,"white":82.7,"black":2.1,"hispanic":2.9,"asian":9.7,"other":2.7},
+        {"name":"Downtown","population":18306,"white":55.6,"black":4.0,"hispanic":6.0,"asian":31.1,"other":3.3},
+        {"name":"Dorchester","population":126909,"white":22.3,"black":44.0,"hispanic":19.9,"asian":9.9,"other":4.0}],
+        [
+            [{"range":"<15k","value":6340},
+                {"range":"15k-25k","value":2449},
+                {"range":"25k-35k","value":2084},
+                {"range":"35k-50k","value":2216},
+                {"range":"50k-75k","value":2107},
+                {"range":"75k-100k","value":1581},
+                {"range":"100k-150k","value":1806},
+                {"range":">150k","value":1316}],
+
+                 [{"range":"<15k","value":181},
+                     {"range":"15k-25k","value":87},
+                     {"range":"25k-35k","value":55},
+                     {"range":"35k-50k","value":94},
+                     {"range":"50k-75k","value":169},
+                     {"range":"75k-100k","value":281},
+                     {"range":"100k-150k","value":418},
+                     {"range":">150k","value":1343}],
+
+                     [{"range":"<15k","value":1531},
+                         {"range":"15k-25k","value":517},
+                         {"range":"25k-35k","value":405},
+                         {"range":"35k-50k","value":464},
+                         {"range":"50k-75k","value":790},
+                         {"range":"75k-100k","value":480},
+                         {"range":"100k-150k","value":867},
+                         {"range":">150k","value":2888}],
+
+                         [{"range":"<15k","value":8042},
+                             {"range":"15k-25k","value":4694},
+                             {"range":"25k-35k","value":3464},
+                             {"range":"35k-50k","value":4581},
+                             {"range":"50k-75k","value":6121},
+                             {"range":"75k-100k","value":4776},
+                             {"range":"100k-150k","value":6324},
+                             {"range":">150k","value":6299}]
+                         ],
+
+                         [
+                             [{"type": "Married Couple", "value": 17.8 },
+                                 {"type": "Male Householder", "value": 6.2},
+                                 {"type": "Female Householder", "value": 31},
+                                 {"type": "Householder Alone", "value": 37.1},
+                                 {"type": "Householder Not Alone", "value": 8}],
+
+                                 [{"type": "Married Couple", "value": 23.2},
+                                     {"type": "Male Householder", "value": 1.7},
+                                     {"type": "Female Householder", "value": 2.7},
+                                     {"type": "Householder Alone", "value": 57.5},
+                                     {"type": "Householder Not Alone", "value": 14.8}],
+
+                                     [{"type": "Married Couple", "value": 35.8},
+                                         {"type": "Male Householder", "value": 2.2},
+                                         {"type": "Female Householder", "value": 4},
+                                         {"type": "Householder Alone", "value": 45.8},
+                                         {"type": "Householder Not Alone", "value": 12.2}],
+
+                                         [{"type": "Married Couple", "value": 26.6},
+                                             {"type": "Male Householder", "value": 6.7},
+                                             {"type": "Female Householder", "value": 27},
+                                             {"type": "Householder Alone", "value": 29},
+                                             {"type": "Householder Not Alone", "value": 10.7}]
+                         ]]

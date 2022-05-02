@@ -24,8 +24,9 @@ d3.json('data/TACCdata.json').then(data => {
       ('#vis-svg-5', data[1][3],'Dorchester');
 
     vis1.selectionDispatcher().on(eventName, onlyShowByID);
-
   })
+
+
 
   d3.select('#Roxbury')
     .style('display', 'none');
