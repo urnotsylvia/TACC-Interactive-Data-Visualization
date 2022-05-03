@@ -11,6 +11,10 @@ function stackedBars() {
 
         let subgroups = data.columns.slice(1);
 
+        var div = d3.select("body").append("div")
+            .attr("class", "tooltip2")
+            .style("opacity", 0);
+
         // List of groups = species here = value of the first column called group -> I show them on the X axis
         //let groups = d3.map(data, function(d){return(d.Neighborhood)}).keys();
 
@@ -66,10 +70,26 @@ function stackedBars() {
                 .attr("z", "0")
                 .on("mouseover", function(d) {
                       d3.select(this)
-                        .style("opacity", 1); })
+                        .style("opacity", 1)
+                        .attr("z", "100")
+                        .attr("stroke", "orange").style("stroke-width", "2px")
+                    div.style("opacity", .9)
+                    div.html(x(data.Neighborhood) + "%")
+                      .style("left", (event.pageX - 10) + "px")
+                      .style("top", (event.pageY + 50) + "px"); })
                 .on("mouseout", function(d) {
                         d3.select(this)
-                            .style("opacity", 0.7); });
+                            .style("opacity", 0.7)
+                            .attr("stroke", "white").style("stroke-width", "1px")
+                        div.style("opacity", 0); })
+                .on("mousemove", function(event, d) {
+                    div.html(x(data.Neighborhood) + "%")
+                        .style("left", event.pageX + "px")
+                        .style("top", event.pageY + "px")
+                })
+                .on("mousedown", function(d) {
+                  d3.select(this).classed('selected', true)
+              });
 
         //add title
          svg.append("text")
@@ -98,71 +118,80 @@ function stackedBars() {
               .attr('transform', 'rotate(-90)')
               .text('Percentage of Households');
 
+          // Placing colored circle for legend
+          svg.append("circle")
+            .attr("cx", width + 10)
+            .attr("cy", 10)
+            .attr("r", 3)
+            .style("fill", "#ffc496");
 
-              svg.append("circle")
-                .attr("cx", width + 10)
-                .attr("cy", 10)
-                .attr("r", 3)
-                .style("fill", "#ffc496");
-              // Placing colored circle for legend
-              svg.append("circle")
-                .attr("cx", width + 10)
-                .attr("cy", 20)
-                .attr("r", 3)
-                .style("fill", "#5fb374");
-              // Placing colored circle for legend
-              svg.append("circle")
-                .attr("cx", width + 10)
-                .attr("cy", 30)
-                .attr("r", 3)
-                .style("fill", "#ff9696");
-              // Placing colored circle for legend
-              svg.append("circle")
-                .attr("cx", width + 10)
-                .attr("cy", 40)
-                .attr("r", 3)
-                .style("fill", "#769dcf");
-              // Placing colored circle for legend
-              svg.append("circle")
-                .attr("cx", width + 10)
-                .attr("cy", 50)
-                .attr("r", 3)
-                .style("fill", "#8b62b5");
-              // Placing text for legend
-              svg.append("text")
-                .attr("x", width + 15)
-                .attr("y", 10)
-                .text("Householder Not Living Alone")
-                .style("font-size", "5px")
-                .attr("alignment-baseline","middle");
-              // Placing text for legend
-              svg.append("text")
-                .attr("x", width + 15)
-                .attr("y", 20)
-                .text("Householder Living Alone")
-                .style("font-size", "5px")
-                .attr("alignment-baseline","middle");
-              // Placing text for legend
-              svg.append("text")
-                .attr("x", width + 15)
-                .attr("y", 30)
-                .text("Female Householder")
-                .style("font-size", "5px")
-                .attr("alignment-baseline","middle");
-              // Placing text for legend
-              svg.append("text")
-                .attr("x", width + 15)
-                .attr("y", 40)
-                .text("Male Householder")
-                .style("font-size", "5px")
-                .attr("alignment-baseline","middle");
-              // Placing text for legend
-              svg.append("text")
-                .attr("x", width + 15)
-                .attr("y", 50)
-                .text("Married Couple Family")
-                .style("font-size", "5px")
-                .attr("alignment-baseline","middle");
+          // Placing colored circle for legend
+          svg.append("circle")
+            .attr("cx", width + 10)
+            .attr("cy", 20)
+            .attr("r", 3)
+            .style("fill", "#5fb374");
+
+          // Placing colored circle for legend
+          svg.append("circle")
+            .attr("cx", width + 10)
+            .attr("cy", 30)
+            .attr("r", 3)
+            .style("fill", "#ff9696");
+
+          // Placing colored circle for legend
+          svg.append("circle")
+            .attr("cx", width + 10)
+            .attr("cy", 40)
+            .attr("r", 3)
+            .style("fill", "#769dcf");
+
+          // Placing colored circle for legend
+          svg.append("circle")
+            .attr("cx", width + 10)
+            .attr("cy", 50)
+            .attr("r", 3)
+            .style("fill", "#8b62b5");
+
+          // Placing text for legend
+          svg.append("text")
+            .attr("x", width + 15)
+            .attr("y", 10)
+            .text("Householder Not Living Alone")
+            .style("font-size", "5px")
+            .attr("alignment-baseline","middle");
+
+          // Placing text for legend
+          svg.append("text")
+            .attr("x", width + 15)
+            .attr("y", 20)
+            .text("Householder Living Alone")
+            .style("font-size", "5px")
+            .attr("alignment-baseline","middle");
+
+          // Placing text for legend
+          svg.append("text")
+            .attr("x", width + 15)
+            .attr("y", 30)
+            .text("Female Householder")
+            .style("font-size", "5px")
+            .attr("alignment-baseline","middle");
+
+          // Placing text for legend
+          svg.append("text")
+            .attr("x", width + 15)
+            .attr("y", 40)
+            .text("Male Householder")
+            .style("font-size", "5px")
+            .attr("alignment-baseline","middle");
+
+          // Placing text for legend
+          svg.append("text")
+            .attr("x", width + 15)
+            .attr("y", 50)
+            .text("Married Couple Family")
+            .style("font-size", "5px")
+            .attr("alignment-baseline","middle");
 
             return chart;
 

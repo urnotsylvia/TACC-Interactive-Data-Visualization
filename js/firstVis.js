@@ -19,6 +19,10 @@ function firstVis() {
         // Get svg from selector
         let svg = d3.select(selector);
 
+        var div = d3.select("body").append("div")
+            .attr("class", "tooltip2")
+            .style("opacity", 0);
+
         // Sets color scale
         let color = d3.scaleOrdinal(["#5E9BB3", "#5EB398", "#895EB3", "#B35E99", "#EDE45B"])
             .domain(['white','black','hispanic','asian','other']);
@@ -77,12 +81,24 @@ function firstVis() {
                 .append("g")
                 .attr("class", "arc")
                 .style("opacity", 0.7)
-                .on("mouseover", function(d) {
+                .on("mouseover", function(event, d) {
                       d3.select(this)
-                        .style("opacity", 1); })
+                        .style("opacity", 1)
+                    div.style("opacity", .9)
+                    div.html(d.data + "%")
+                      .style("left", (event.pageX + 40) + "px")
+                      .style("top", (event.pageY + 40) + "px")
+                    })
                 .on("mouseout", function(d) {
                         d3.select(this)
-                            .style("opacity", 0.7); });
+                            .style("opacity", 0.7)
+                            div.style("opacity", 0);
+                        })
+                .on("mousemove", function(event, d) {
+                    div.html(d.data + "%")
+                        .style("left", event.pageX + "px")
+                        .style("top", event.pageY + "px")
+                });
 
 
             // Draws circles and adds unique ID for each one
@@ -93,14 +109,21 @@ function firstVis() {
               .attr("d", arc)
               .attr("id", names[x]+'_circle')
               .attr("stroke", "white").style("stroke-width", "1px")
-              .on("mousedown", function(d) {
-                dispatcher.call('newSelect', this, names[x]);}
-                )
-              .append("svg:title")
-              .text(function(d) {
-                return d.value + '%';
+              .on("mouseover", function(d) {
+                    d3.select(this)
+                      .attr("stroke", "orange").style("stroke-width", "2px")
+                      .attr("z", "10")
+                  })
+              .on("mouseout", function(d) {
+                      d3.select(this)
+                          .attr("stroke", "white").style("stroke-width", "1px")
+                          .attr("z", "0")
 
-              });
+                      })
+              .on("mousedown", function(d) {
+                dispatcher.call('newSelect', this, names[x])
+            });
+
 
             svg.append("text")
                 .attr("x", captions[x][0])

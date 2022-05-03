@@ -40,30 +40,4 @@
                              {"range":"75k-100k","value":4776},
                              {"range":"100k-150k","value":6324},
                              {"range":">150k","value":6299}]
-                         ],
-
-                         [
-                             [{"type": "Married Couple", "value": 17.8 },
-                                 {"type": "Male Householder", "value": 6.2},
-                                 {"type": "Female Householder", "value": 31},
-                                 {"type": "Householder Alone", "value": 37.1},
-                                 {"type": "Householder Not Alone", "value": 8}],
-
-                                 [{"type": "Married Couple", "value": 23.2},
-                                     {"type": "Male Householder", "value": 1.7},
-                                     {"type": "Female Householder", "value": 2.7},
-                                     {"type": "Householder Alone", "value": 57.5},
-                                     {"type": "Householder Not Alone", "value": 14.8}],
-
-                                     [{"type": "Married Couple", "value": 35.8},
-                                         {"type": "Male Householder", "value": 2.2},
-                                         {"type": "Female Householder", "value": 4},
-                                         {"type": "Householder Alone", "value": 45.8},
-                                         {"type": "Householder Not Alone", "value": 12.2}],
-
-                                         [{"type": "Married Couple", "value": 26.6},
-                                             {"type": "Male Householder", "value": 6.7},
-                                             {"type": "Female Householder", "value": 27},
-                                             {"type": "Householder Alone", "value": 29},
-                                             {"type": "Householder Not Alone", "value": 10.7}]
                          ]]

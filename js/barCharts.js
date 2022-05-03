@@ -11,6 +11,11 @@ function barCharts() {
         // format comma
         let formatComma = d3.format(",")
 
+        var div = d3.select("body").append("div")
+            .attr("class", "tooltip")
+                .style("opacity", 0);
+
+
         // adding x scale to g
         let x = d3.scaleBand()
             .range([0, 165])
@@ -32,18 +37,6 @@ function barCharts() {
             .call(d3.axisLeft(y))
             .style("font-size", "5px");
 
-        // adding tooltip for the barchart interactive display
-        let tooltip = d3.select("body")
-            .append("div")
-            .style("position", "absolute")
-            .style("z-index", "10")
-            .style("visibility", "hidden")
-            .style("padding-top","10px")
-            .style("padding-bottom","10px")
-            .style("padding-left","10px")
-            .style("padding-right","10px")
-            .style("background", d3.rgb(176, 196, 222, 1));
-
         // creating bars for the bar chart/histogram
         svg.selectAll("mybar")
             .data(data)
@@ -58,20 +51,25 @@ function barCharts() {
                   d3.select(this)
                   .transition()
                   .duration(250)
-                  .attr("fill", "#328fa8");
+                  .attr("fill", "#328fa8")
+                  div.style("opacity", 0);
               })
-              .on('mouseover', function(d) { //mouseover event
-                  console.log(d);
+              .on('mouseover', function(event, d) { //mouseover event
                   d3.select(this)
-                    .attr('fill', 'orange');
-                    tooltip
-                    .style("visibility", "visible")
-                    .text('hey');
-                })
+                    .attr('fill', 'orange')
+                   div.style("opacity", .9)
+                   div.html("Income:" + d.range + "<br/>" + "Residents: " + formatComma(d.value))
+                     .style("left", (event.pageX - 50) + "px")
+                     .style("top", event.pageY + "px")
+                 })
+             .on("mousemove", function(event, d) {
+                 div.html("Income:" + d.range + "<br/>" + "Residents: " + formatComma(d.value))
+                     .style("left", event.pageX + "px")
+                     .style("top", event.pageY + "px")
+             });
 
                 //.append("svg:title")
                 //.text(function(d) { return + d.value; })
-                ;
 
        //add title
         svg.append("text")
@@ -99,6 +97,13 @@ function barCharts() {
              .style("font-size", "6px")
              .attr('transform', 'rotate(-90)')
              .text('Neighborhood Residents');
+
+        // // add mean line
+        //  svg.append("line")
+        //      .attr("x1", x2(1))
+        //      .attr("x2", width)
+        //      .attr("y1", y(dataSum / data.length))
+        //      .attr("y2", y(dataSum / data.length));
 
         return chart;
     }

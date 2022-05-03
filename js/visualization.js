@@ -52,7 +52,7 @@ d3.json('data/TACCdata.json').then(data => {
     d3.selectAll('.vis-holder-2')
       .style('display','none');
     d3.select('#' + id)
-      .style('display', 'flex');
+      .style('display', 'flex')
   };
 
   d3.select('#SouthBostonWaterfront')
