@@ -1,6 +1,6 @@
 function stackedBars() {
 
-    let width = 165;
+    let width = 185;
     let height = 150;
 
     function chart(selector, data) {
