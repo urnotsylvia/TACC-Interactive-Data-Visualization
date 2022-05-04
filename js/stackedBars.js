@@ -83,7 +83,8 @@ function stackedBars() {
                             .attr("stroke", "white").style("stroke-width", "1px")
                         div.style("opacity", 0); })
                 .on("mousemove", function(event, d) {
-                    div.html(d[1] + "%")
+                    console.log(d)
+                    div.html((d[1] - d[0]).toFixed(1) + "%")
                         .style("left", event.pageX + "px")
                         .style("top", event.pageY + "px")
                 })
