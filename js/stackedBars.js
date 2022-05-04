@@ -9,9 +9,11 @@ function stackedBars() {
         let svg = d3.select(selector).append('g')
             .attr('transform', 'translate(' + -130 + ',' + 30 + ')');
 
+        // making subgroups aka list of all the neighborhoods
         let subgroups = data.columns.slice(1);
 
-        var div = d3.select("body").append("div")
+        // adding tooltip to div
+        let div = d3.select("body").append("div")
             .attr("class", "tooltip2")
             .style("opacity", 0);
 
@@ -46,7 +48,7 @@ function stackedBars() {
             .range(['#8b62b5','#769dcf','#ff9696', '#5fb374','#ffc496']);
 
         //stack the data? --> stack per subgroup
-        var stackedData = d3.stack()
+        let stackedData = d3.stack()
             .keys(subgroups)
             (data);
 
@@ -83,7 +85,6 @@ function stackedBars() {
                             .attr("stroke", "white").style("stroke-width", "1px")
                         div.style("opacity", 0); })
                 .on("mousemove", function(event, d) {
-                    console.log(d)
                     div.html((d[1] - d[0]).toFixed(1) + "%")
                         .style("left", event.pageX + "px")
                         .style("top", event.pageY + "px")

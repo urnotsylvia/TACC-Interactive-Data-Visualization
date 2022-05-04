@@ -1,7 +1,7 @@
 // Generates our first visualization
 function firstVis() {
 
-    // Defining values
+    // Defining values for visualization
     let margin = {
         top: 10,
         left: 50,
@@ -19,7 +19,8 @@ function firstVis() {
         // Get svg from selector
         let svg = d3.select(selector);
 
-        var div = d3.select("body").append("div")
+        // adds tooltip to div
+        let  div = d3.select("body").append("div")
             .attr("class", "tooltip2")
             .style("opacity", 0);
 
@@ -27,16 +28,21 @@ function firstVis() {
         let color = d3.scaleOrdinal(["#5E9BB3", "#5EB398", "#895EB3", "#B35E99", "#EDE45B"])
             .domain(['white','black','hispanic','asian','other']);
 
+        // sets a maximum size for the raddi
         let largestRadius = 125;
 
         // All arrays follow the order: [Roxbury, South Boston Waterfront, Downtown, Dorchester]
         let names = ["Roxbury","South Boston Waterfront","Downtown","Dorchester"];
+
         // Radius size of each circle in pixels
         let radii = [];
+
         // Population of each city
         let populations = [];
+
         // Racial breakdown, each element is an array in form: [white,black,hispanic,asian,other]
         let percentages = [];
+
         // Center point coordinates for Dorchester circle
         let x = 400, y = 250;
 
@@ -69,12 +75,15 @@ function firstVis() {
             svg = svg.append('g')
                 .attr('transform', 'translate(' + coords[x][0] + ',' + coords[x][1] + ')');
 
+            // defining pie chart
             let pie = d3.pie();
 
+            // adding in arcs
             let arc = d3.arc()
                 .innerRadius(0)
                 .outerRadius(radii[x]);
 
+            // attributes of all arcs
             let arcs = svg.selectAll("arc")
                 .data(pie(percentages[x]))
                 .enter()
@@ -124,14 +133,12 @@ function firstVis() {
                 dispatcher.call('newSelect', this, names[x])
             });
 
-
+            // adds neighborhood name next to correct pie chart
             svg.append("text")
                 .attr("x", captions[x][0])
                 .attr("y", captions[x][1])
                 .style("font-size", captions[x][2] + "px")
                 .text(data[x].name);
-
-
         }
 
         // Placing text for legend title
@@ -141,35 +148,42 @@ function firstVis() {
           .text("Legend")
           .style("font-size", "15px")
           .attr("alignment-baseline","middle");
+
+        // Placing colored circle for legend
         svg.append("circle")
           .attr("cx", width-10)
           .attr("cy", -75)
           .attr("r", 6)
           .style("fill", "#5E9BB3");
+
         // Placing colored circle for legend
         svg.append("circle")
           .attr("cx", width-10)
           .attr("cy", -45)
           .attr("r", 6)
           .style("fill", "#5EB398");
+
         // Placing colored circle for legend
         svg.append("circle")
           .attr("cx", width-10)
           .attr("cy", -15)
           .attr("r", 6)
           .style("fill", "#895EB3");
+
         // Placing colored circle for legend
         svg.append("circle")
           .attr("cx", width-10)
           .attr("cy", 15)
           .attr("r", 6)
           .style("fill", "#B35E99");
+
         // Placing colored circle for legend
         svg.append("circle")
           .attr("cx", width-10)
           .attr("cy", 45)
           .attr("r", 6)
           .style("fill", "#EDE45B");
+
         // Placing text for legend
         svg.append("text")
           .attr("x", width)
@@ -177,6 +191,7 @@ function firstVis() {
           .text("White")
           .style("font-size", "13px")
           .attr("alignment-baseline","middle");
+
         // Placing text for legend
         svg.append("text")
           .attr("x", width)
@@ -191,6 +206,7 @@ function firstVis() {
           .text("Hispanic")
           .style("font-size", "13px")
           .attr("alignment-baseline","middle");
+
         // Placing text for legend
         svg.append("text")
           .attr("x", width)
@@ -205,6 +221,7 @@ function firstVis() {
           .text("Other")
           .style("font-size", "13px")
           .attr("alignment-baseline","middle");
+
         // Placing text for legend title
         svg.append("text")
           .attr("x", width - 10)

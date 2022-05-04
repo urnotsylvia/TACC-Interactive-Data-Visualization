@@ -2,7 +2,7 @@
 function barCharts() {
 
     // making chart
-    function chart(selector, data, title) {
+    function chart(selector, data, title, median) {
 
         // Get svg from selector
         let svg = d3.select(selector).append('g')
@@ -11,16 +11,18 @@ function barCharts() {
         // format comma
         let formatComma = d3.format(",")
 
-        var div = d3.select("body").append("div")
+        // adding tooltip to div
+        let div = d3.select("body").append("div")
             .attr("class", "tooltip")
                 .style("opacity", 0);
-
 
         // adding x scale to g
         let x = d3.scaleBand()
             .range([0, 165])
             .domain(data.map(d => d.range))
             .padding(0.2);
+
+        // adding chart attributes to svg
         svg.append("g")
             .attr("transform", "translate(0," + 150 + ")")
             .call(d3.axisBottom(x))
@@ -33,6 +35,8 @@ function barCharts() {
         let y = d3.scaleLinear()
             .domain([0, 50 + d3.max(data, d => d.value)])
             .range([150,0]);
+
+        // adding chart attributes to svg
         svg.append("g")
             .call(d3.axisLeft(y))
             .style("font-size", "5px");
@@ -68,9 +72,6 @@ function barCharts() {
                      .style("top", event.pageY + "px")
              });
 
-                //.append("svg:title")
-                //.text(function(d) { return + d.value; })
-
        //add title
         svg.append("text")
             .attr("x", (svg.attr("width") / 2 + 80))
@@ -80,6 +81,15 @@ function barCharts() {
             .style('stroke', 'black')
             .style('stroke-width', '0.5')
             .text(title + ' Income Distribution');
+
+        svg.append("text")
+            .attr("x", (svg.attr("width") / 2 + 80))
+            .attr("y", -2)
+            .attr("text-anchor", "middle")
+            .style("font-size", "5px")
+            .style('stroke', 'black')
+            .style('stroke-width', '0.25')
+            .text(title + ' Median Income: ' + median);
 
         // add x-axis
          svg.append("text")
@@ -97,13 +107,6 @@ function barCharts() {
              .style("font-size", "6px")
              .attr('transform', 'rotate(-90)')
              .text('Neighborhood Residents');
-
-        // // add mean line
-        //  svg.append("line")
-        //      .attr("x1", x2(1))
-        //      .attr("x2", width)
-        //      .attr("y1", y(dataSum / data.length))
-        //      .attr("y2", y(dataSum / data.length));
 
         return chart;
     }

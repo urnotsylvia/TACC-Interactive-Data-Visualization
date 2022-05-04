@@ -14,16 +14,16 @@ d3.json('data/TACCdata.json').then(data => {
       ('#vis-svg-1', data[0]);
 
     let vis2 = barCharts()
-      ('#vis-svg-2', data[1][0], 'Roxbury');
+      ('#vis-svg-2', data[1][0], 'Roxbury', '$30,534');
 
     let vis3 = barCharts()
-      ('#vis-svg-3', data[1][1],'South Boston Waterfront');
+      ('#vis-svg-3', data[1][1],'South Boston Waterfront', '$153,545');
 
     let vis4 = barCharts()
-      ('#vis-svg-4', data[1][2],'Downtown');
+      ('#vis-svg-4', data[1][2],'Downtown', '$88,750');
 
     let vis5 = barCharts()
-      ('#vis-svg-5', data[1][3],'Dorchester');
+      ('#vis-svg-5', data[1][3],'Dorchester', '$55,009');
 
     let vis6 = stackedBars()
       ('#vis-svg-6', data2, 'stackedBars');
