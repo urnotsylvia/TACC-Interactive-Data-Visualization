@@ -48,11 +48,16 @@
 
     <p> Housing issues based on racial disparities and income inequality continue to rise in Boston.
         In particular, The American City Coalition (TACC) has identified Dorchester, Roxbury, Downtown Boston,
-        and South Boston Waterfront as areas of interest. Our partner, TACC, identified the need to present
-        this information and explore how racial breakup in Boston neighborhoods compare to income inequality.
-        We propose two types of graphs: pie charts and bar charts. While the pie charts display racial breakup
-        while accouting for population size, the barcharts demonstrate varying income levels based on the
-        selected Boston neighborhood. These graphs concisely display relevant information for TACC internal distribution. </p>
+        and South Boston Waterfront as areas of interest. TACC is a non-profit innovative consultancy organization based in
+         the Boston neighborhood of Roxbury, grounded in an inclusive, comprehensive, and collaborative approach to
+        neighborhood revitalization. <br/>
+
+        <br/> Our mission was to display Boston housing data relating to racial demographics, income distribution, and housing type.
+        These graphs are intended to provide TACC and their partners with an overview of Dorchester, Roxbury, South Boston Waterfront, and
+        Downtown Boston. We hope these graphs are found to be a concise display of the given, aggregated data. These visualizations
+        are expected to be used for internal distribution and communication within TACC and between TACC and relevant partners.<br/>
+
+        </p>
 
 
     <h1>Visualization</h1>
@@ -105,13 +110,42 @@
   <!-- Further writeup -->
   <div class='content-column'>
 
-    <h1>Visualization explanation</h1>
+</p>
 
-    <p>
-        <li><a href='https://docs.google.com/presentation/d/1Bgql7VnEXYI-tcCXmD9MrpwijMG_h3qob0klngHFwQo/edit?usp=sharing'>
+
+
+<p>
+
+        <br/> <h1>Visualization Explanation</h1>
+
+        We propose the visualization above to display this data. The pie charts display the racial breakup in our
+        4 neighborhoods of interest. We decided to display the piecharts in a bubble chart format, such that the
+        area of each pie chart is determined by the population size. By displaying population size by area instead of
+        by radius, we are able to address a potential Lie Factor issue. Additionally, we have a legend on the right-hand slide
+        and a tooltip enabled such that percentages are easily found through mouse hover. We hope this pie chart is able to address TACC's
+        need to display racial group data for their neighborhoods of interest. <br/>
+
+        <br/> To continue investigating the housing disparities between the neighborhoods, we also created a histogram
+        to display the income distribution of each neighborhood. The user is able to view each of the histograms by
+        clicking on the corresponding pie chart. For furthur insight, the user is able to hover above each bar to find
+        the numeric data. This histogram, enabled with linking, is able to present income distribution information in
+        tandem with racial and population data. <br/>
+
+        <br/> Finally, we created a stacked bar chart in the lower right hand corner to display information relating to
+        homeownership type. This information is relevant to see in relationt to racial group and income distribution data. The
+        stacked bar chart is able to reveal more information through a tooltip mousehover. <br/>
+
+        <br/> All 3 of these visualizations work together to display various characteristics of 4 different neighborhoods in
+        Boston. The user is able to see general trends in income distribution, racial breakup, and housing ownership. We believe
+        this visualization thus addresses our Analyze/High-Level Task of 'Present'.
+
+<br/>
+
+        <a href='https://docs.google.com/presentation/d/1Bgql7VnEXYI-tcCXmD9MrpwijMG_h3qob0klngHFwQo/edit?usp=sharing'>
             Linked Presentation </a>
 
-    </p>
+</p>
+
 
     <h1>Demo Video</h1>
 
@@ -138,10 +172,21 @@
           Pure CSS responsive 'Fork me on GitHub' ribbon</a>
         by Chris Heilmann is used to create the banner that links back to the source code repository.
       </li>
-
       <li><a href = "https://bl.ocks.org/d3noob/180287b6623496dbb5ac4b048813af52">Simple Tooltips in V6</a> by d3noob on bl.ocks.org
-     was used to implement the tooltip feature on the barchart and heatmap.</li>
-     
+     was used to implement the tooltip feature on the histogram, piechart, and stacked bar chart.</li>
+     <li><a href='https://colorbrewer2.org/#type=qualitative&scheme=Set1&n=5'>
+        Color Brewer</a>
+        was used to figure choose colors for pie charts.
+      </li>
+      <li><a href='https://www.d3-graph-gallery.com/graph/pie_basic.html'>
+              Pie Charts</a>
+              by Yan Holtz was used to create the pie charts using d3.
+            </li>
+    <li><a href='https://d3-graph-gallery.com/graph/barplot_stacked_basicWide.html'>
+            Stacked Bar Charts</a>
+            by Yan Holtz was used to create the stacked bar charts using d3.
+          </li>
+
     </ul>
   </div>
 
